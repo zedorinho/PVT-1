@@ -1,0 +1,145 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+%
+% -----------------------------------------------------
+% LaTeX-Vorlage
+%
+% SHORTREPORT v1
+% von Markus Knösel frei nach KOMA-Script-Klassen
+% -----------------------------------------------------
+%
+\documentclass[11pt]{scrartcl}		% Schriftgröße festlegen, standard 10pt 
+%
+\usepackage[utf8]{inputenc}				% input encoding für vim/utf8/Umlaute
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+%
+% -----------------------------------------------------
+\usepackage{geometry} 					% legt die Blattgröße und Randabstände fest
+\geometry{a4paper}
+\geometry{margin=3cm,top=2.5cm,bottom=2.5cm}
+%
+%
+%
+%
+%
+%
+% -----------------------------------------------------
+\usepackage{graphicx} 					% support the \includegraphics command and options
+\usepackage[parfill]{parskip}				% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{booktabs}					% for much better looking tables
+%\usepackage{array}					% for better arrays (eg matrices) in maths
+\usepackage{paralist}					% very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim}					% adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig}					% make it possible to include more than one captioned figure/table in a single float
+\usepackage{color}
+\usepackage[german]{babel}
+\usepackage{units}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usepackage{icomma,units}
+\usepackage{enumerate}
+\usepackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{chemmacros}
+\usepackage{chemfig}
+%\usepackage{PSTricks}
+\usepackage{epstopdf}
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+%
+%
+%
+%
+% ---------- HEADERS & FOOTERS ------------------------
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+%\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{Markus Knösel}\chead{}\rhead{\textsc{Physikalische Chemie II}}
+%\lfoot{}\cfoot{\thepage}\rfoot{}
+%
+%
+%
+%
+% ---------- SECTION TITLE APPEARANCE -----------------
+\usepackage{sectsty}
+\definecolor{cyan}{RGB}{30,103,182}      % hellgruener Rahmen
+\allsectionsfont{\mdseries\upshape\textcolor{cyan}} % (See the fntguide.pdf for font help)
+%
+%
+%
+%
+% ---------- ToC (table of contents) APPEARANCE -------
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+% \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+% \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+%
+%
+%
+%
+% ---------- TITLEPAGE DETAILS ------------------------
+\addtokomafont{subject}{\sc}
+\setkomafont{title}{\normalfont}
+	\subject{Theoretische Grundlagen}
+	\title{Die fraktionierte Destillation}
+	\subtitle{3835 - Praktikum Verfahrenstechnik und Umweltschutz}
+	\author{\small M. Knösel}
+	\date{} % Activate to display a given date or no date (if empty),
+%\publishers{\normalsize \includegraphics[width=4cm]{unilogo} \\ Fachbereich IV \\ Abteilung für Chemie}
+%
+%
+%
+%
+% ---------- DOCUMENT ---------------------------------
+%
+\newtagform{equation}{\{}{\}}
+\usetagform{equation}
+%
+\begin{document}
+	\maketitle
+%	\tableofcontents
+%	\newpage
+%
+% ------ Equation/Reaction Counter ---------
+\RenewEnviron{reaction}{\begin{equation} \expandafter \ch\expandafter {\BODY} \end{equation}}
+\RenewEnviron{reaction*}{\begin{equation*}\expandafter \ch\expandafter{\BODY}\end{equation*}}
+\RenewEnviron{reactions}{\begin{align}\expandafter\ch\expandafter{\BODY}\end{align}}
+\RenewEnviron{reactions*}{\begin{align*}\expandafter\ch\expandafter{\BODY}\end{align*}}
+%
+%	
+%
+%
+%% \section*{\abstractname}
+%% Blabla
+%
+\section{Retifikation}
+In der Fachliteratur wird der Begriff der fraktionierten Destillation oft synonym gebraucht mit dem Begriff der Retifikation. Unter Retifikation versteht man eine Destillation eines Stoffgemisches mithilfe einer Destillationskolonne. Die Trennwirkung der Retifikation liegt um ein vielfaches höher als die der einfachen Destillation. Sie wird angewendet bei Stoffgemischen, deren Bestandteile sich in ihren Siedetemperaturen um weniger als $\Delta T = \SI{80}{\celsius}$ unterscheiden.
+%
+Im folgenden soll zur Vereinfachung ein binäres Gemisch betrachtet werden. Die aufgezeigten Lösungen lassen sich aber auch an Gemischen mit mehreren Komponenten anwenden. Bei Verdampfung eines binären Gemisches des Molenbruchs $x_{1,l}$ wird die leichter siedenden Komponente im Dampf angereichert auf $x_{1,g}$:
+\begin{equation}
+	\frac{x_{1,g}}{1-x_{1,g}} = \alpha \frac{x_{1,l}}{1-x_{1,l}}
+\end{equation}
+Bei der vollständigen Kondensation dieses Dampfes ändert sich die Konzentration nicht, so daß auf dem nächsten Kolonnenboden eine Phase der gleichen Konzentration entsteht.
+\begin{equation}
+	\frac{x_{1,g}}{1-x_{1,g}} = \frac{x_{2,l}}{1-x_{2,l}}
+\end{equation}
+Wird diese Phase erneut verdampft und auf einen weiteren Kolonnenboden kondensiert, so ergibt sich für die Konzentration der dortigen Phase:
+\begin{equation}
+	\frac{x_{2,g}}{1-x_{2,g}} = \alpha \frac{x_{2,l}}{1-x_{2,l}} =  \alpha^2 \frac{x_{1,l}}{1-x_{1,l}}
+\end{equation}
+Nach \emph{n}-maliger Wiederholung des Verdampfungs-Kondensations-Vorganges erhält man schließlich
+\begin{equation}
+	\frac{x_{n,g}}{1-x_{n,g}} = \alpha^n \frac{x_{1,l}}{1-x_{1,l}}
+\end{equation}
+Hierdurch ist also eine Potenzierung der Trennwirkung erreicht worden.
+Dieser Vorgang der mehrfachen Verdampfung und Kondensation läßt sich durch Destillationskolonnen realisieren, in denen Dampf und Flüssigkeiten im Gegenstrom zueinander bewegt werden. Ein gutes Beispiel, um dieses Verfahren zu verdeutlichen, stellt die Glockenbodenkolonne (oder \emph{Bruun}-Kolonne) dar.
+\\
+WEITER nächstes Mal
+\\
+%
+\section{Literaturverzeichnis}
+%
+\textsc{Jander Blasius} (1995): \textit{Einführung in das anorganisch-chemische Praktikum}, von Prof. Dr. J. Strähle und Priv.Doz. Dr. E. Schwea, 14., neu bearbeitete Auflage, S. Hirzel Verlag, Stuttgart
+%
+\end{document}
